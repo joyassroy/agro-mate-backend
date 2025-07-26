@@ -50,7 +50,7 @@
     nav a {
       margin: 0 15px; color: white; text-decoration: none; font-weight: bold; position: relative;
     }
-    
+
     .form-card {
       max-width: 520px; margin: 60px auto; background: rgba(255,255,255,0.95);
       padding: 35px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
@@ -164,7 +164,11 @@
         <a href="{{ url_for('about') }}">About</a>
         <a href="{{ url_for('service') }}">Service</a>
         <a href="{{ url_for('contact') }}">Contact</a>
-        <a href="{{ url_for('login') }}">Login</a>
+        {% if user_logged_in %}
+          <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+          <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
       </div>
     </nav>
   </header>
@@ -174,22 +178,22 @@
     <form id="signupForm">
       <label>Full Name</label>
       <input type="text" placeholder="Your Name" required />
-      
+
       <label>Email Address</label>
       <input type="email" placeholder="you@example.com" required />
-      
+
       <label>Phone Number</label>
       <input type="tel" placeholder="+8801XXXXXXXXX" pattern="[+]{1}[0-9]{11,14}" required />
-      
+
       <label>Password</label>
       <input type="password" required />
-      
+
       <label>Confirm Password</label>
       <input type="password" required />
-      
+
       <label>Location</label>
       <input type="text" placeholder="e.g., Dhaka, Bangladesh" required />
-      
+
       <label>Crops of Interest</label>
       <select multiple>
         <option>Rice</option>
@@ -201,7 +205,7 @@
         <option>Orange</option>
         <option>Jute</option>
       </select>
-      
+
       <button type="submit">Sign Up</button>
     </form>
     <div class="success-message" id="successMessage">
@@ -223,7 +227,7 @@
 
     <div class="review">
       <p>Leave a review:</p>
-      <form>
+      <form method="post">
         <input type="email" placeholder="Your email" required />
         <input type="submit" value="Submit" />
       </form>
@@ -243,3 +247,54 @@
   </script>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8"/>-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--  <title>CropMate – Sign Up</title>-->
+<!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--  <header>-->
+<!--    <nav>-->
+<!--      <h1>Crop<span>Mate</span></h1>-->
+<!--      <div>-->
+<!--        <a href="{{ url_for('index') }}">Home</a>-->
+<!--        <a href="{{ url_for('about') }}">About</a>-->
+<!--        <a href="{{ url_for('service') }}">Service</a>-->
+<!--        <a href="{{ url_for('contact') }}">Contact</a>-->
+<!--        {% if session.email %}-->
+<!--          <a href="{{ url_for('logout') }}">Logout</a>-->
+<!--        {% else %}-->
+<!--          <a href="{{ url_for('login') }}">Login</a>-->
+<!--        {% endif %}-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
+
+<!--  <section class="signup-card">-->
+<!--    <h2>Create a New Account</h2>-->
+<!--    <form method="POST" action="{{ url_for('signup') }}">-->
+<!--      <label>Email</label>-->
+<!--      <input type="email" name="email" placeholder="you@example.com" required/>-->
+
+<!--      <label>Password</label>-->
+<!--      <input type="password" name="password" placeholder="••••••••" required/>-->
+
+<!--      <button type="submit">Sign Up</button>-->
+<!--    </form>-->
+
+<!--    <div id="message">-->
+<!--      {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--        {% for category, message in messages %}-->
+<!--          <p class="{{ category }}">{{ message }}</p>-->
+<!--        {% endfor %}-->
+<!--      {% endwith %}-->
+<!--    </div>-->
+
+<!--    <p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>-->
+<!--  </section>-->
+<!--</body>-->
+<!--</html>-->

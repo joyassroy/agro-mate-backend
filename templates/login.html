@@ -1,13 +1,376 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8"/>-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--  <title>AGROPRO Login</title>-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>-->
+<!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>-->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+<!-- <style>-->
+<!--    * {-->
+<!--      box-sizing: border-box;-->
+<!--      font-family: 'Open Sans', sans-serif;-->
+<!--      margin: 0;-->
+<!--      padding: 0;-->
+<!--    }-->
+<!--    body {-->
+<!--      background: url('{{ url_for('static', filename='images/crr.avif') }}') no-repeat  center fixed;-->
+<!--      background-size: cover;-->
+<!--      color: #333;-->
+<!--    }-->
+<!--     header {-->
+<!--      background-color: #000;-->
+<!--      color: #fff;-->
+<!--    }-->
+
+<!--    nav {-->
+<!--      display: flex;-->
+<!--      justify-content: space-between;-->
+<!--      align-items: center;-->
+<!--      padding: 1rem 2rem;-->
+<!--      flex-wrap: wrap;-->
+<!--    }-->
+
+<!--    nav h1 {-->
+<!--      color: #28a745;-->
+<!--      margin: 0;-->
+<!--      font-size: 1.8rem;-->
+<!--    }-->
+
+<!--    nav span {-->
+<!--      color: rgb(238, 178, 104);-->
+<!--    }-->
+
+<!--    nav a {-->
+<!--      color: #fff;-->
+<!--      text-decoration: none;-->
+<!--      margin: 0 1rem;-->
+<!--      transition: 0.3s;-->
+<!--    }-->
+
+<!--    nav a:hover {-->
+<!--      color: #28a745;-->
+<!--    }-->
+<!--    .login-card {-->
+<!--      max-width: 500px;-->
+<!--      margin: 60px auto;-->
+<!--      background: rgba(255,255,255,0.95);-->
+<!--      padding: 35px;-->
+<!--      border-radius: 12px;-->
+<!--      box-shadow: 0 6px 20px rgba(0,0,0,0.3);-->
+<!--      animation: fadeIn 1s ease;-->
+<!--    }-->
+<!--    @keyframes fadeIn {-->
+<!--      from { opacity: 0; transform: translateY(30px); }-->
+<!--      to { opacity: 1; transform: translateY(0); }-->
+<!--    }-->
+<!--    h2 {-->
+<!--      text-align: center;-->
+<!--      margin-bottom: 25px;-->
+<!--      color: #228B22;-->
+<!--    }-->
+<!--    label {-->
+<!--      display: block;-->
+<!--      margin: 12px 0 6px;-->
+<!--      font-weight: bold;-->
+<!--    }-->
+<!--    input {-->
+<!--      width: 100%;-->
+<!--      padding: 10px;-->
+<!--      border: 1px solid #aaa;-->
+<!--      border-radius: 6px;-->
+<!--      transition: border-color 0.3s ease;-->
+<!--    }-->
+<!--    input:focus {-->
+<!--      border-color: #228B22;-->
+<!--      outline: none;-->
+<!--    }-->
+<!--    button {-->
+<!--      margin-top: 25px;-->
+<!--      padding: 14px;-->
+<!--      background-color: #228B22;-->
+<!--      color: white;-->
+<!--      border: none;-->
+<!--      border-radius: 6px;-->
+<!--      font-size: 16px;-->
+<!--      cursor: pointer;-->
+<!--      width: 100%;-->
+<!--      transition: background-color 0.3s ease, transform 0.2s ease;-->
+<!--    }-->
+<!--    button:hover {-->
+<!--      background-color: #1c6e1c;-->
+<!--      transform: scale(1.02);-->
+<!--    }-->
+<!--    .signup-link {-->
+<!--      margin-top: 20px;-->
+<!--      text-align: center;-->
+<!--      font-size: 15px;-->
+<!--    }-->
+<!--    .signup-link a {-->
+<!--      color: #228B22;-->
+<!--      text-decoration: none;-->
+<!--      font-weight: bold;-->
+<!--    }-->
+<!--    .signup-link a:hover {-->
+<!--      text-decoration: underline;-->
+<!--    }-->
+<!--    #message {-->
+<!--      margin-top: 20px;-->
+<!--      text-align: center;-->
+<!--      font-weight: bold;-->
+<!--    }-->
+<!--    footer {-->
+<!--      background-color: #000;-->
+<!--      color: #fff;-->
+<!--      text-align: center;-->
+<!--      padding: 2rem 1rem;-->
+<!--    }-->
+
+<!--    footer p {-->
+<!--      margin: 0.5rem 0;-->
+<!--    }-->
+
+<!--    .social-icons {-->
+<!--      margin: 1rem 0;-->
+<!--    }-->
+
+<!--    .social-icons a {-->
+<!--      margin: 0 8px;-->
+<!--      color: #28a745;-->
+<!--      font-size: 24px;-->
+<!--      text-decoration: none;-->
+<!--      transition: 0.3s;-->
+<!--    }-->
+
+<!--    .social-icons a:hover {-->
+<!--      color: rgb(238, 178, 104);-->
+<!--    }-->
+
+<!--    .review p {-->
+<!--      margin-bottom: 6px;-->
+<!--    }-->
+
+<!--    .review input[type="email"] {-->
+<!--      padding: 10px;-->
+<!--      width: 70%;-->
+<!--      max-width: 300px;-->
+<!--      border: none;-->
+<!--      border-radius: 5px;-->
+<!--    }-->
+
+<!--    .review input[type="submit"] {-->
+<!--      padding: 10px 20px;-->
+<!--      background-color: #28a745;-->
+<!--      border: none;-->
+<!--      color: #fff;-->
+<!--      border-radius: 5px;-->
+<!--      cursor: pointer;-->
+<!--      margin-left: 10px;-->
+<!--      transition: 0.3s;-->
+<!--      /* width: 5%; */-->
+<!--      max-width: 100px;-->
+<!--    }-->
+
+<!--    .review input[type="submit"]:hover {-->
+<!--      background-color: #218838;-->
+<!--    }-->
+
+<!--    .copyright {-->
+<!--      text-align: center;-->
+<!--      padding-top: 1rem;-->
+<!--      font-size: 0.9rem;-->
+<!--      color: #ccc;-->
+<!--      border-top: 1px solid #444;-->
+<!--      margin-top: 2rem;-->
+<!--    }-->
+<!--    @media (max-width: 768px) {-->
+<!--      .review input[type="email"] {-->
+<!--        width: 100%;-->
+<!--        margin-bottom: 10px;-->
+<!--      }-->
+
+<!--      .review input[type="submit"] {-->
+<!--        width: 100%;-->
+<!--        margin-left: 0;-->
+<!--      }-->
+<!--    }-->
+<!--    @media (max-width: 600px) {-->
+<!--      header nav {-->
+<!--        display: none;-->
+<!--      }-->
+<!--      .login-card {-->
+<!--        margin: 20px;-->
+<!--      }-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--  <header>-->
+<!--    <nav>-->
+<!--      <h1>Crop<span>Mate</span></h1>-->
+<!--      <div>-->
+<!--        <a href="{{ url_for('index') }}">Home</a>-->
+<!--        <a href="{{ url_for('about') }}">About</a>-->
+<!--        <a href="{{ url_for('service') }}">Service</a>-->
+<!--        <a href="{{ url_for('contact') }}">Contact</a>-->
+
+
+<!--        {% if session.email %}-->
+<!--          <a href="{{ url_for('logout') }}">Logout</a>-->
+<!--        {% else %}-->
+<!--          <a href="{{ url_for('login') }}">Login</a>-->
+<!--        {% endif %}-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
+
+<!--  <section class="login-card">-->
+<!--    <h2>Log In to Your Account</h2>-->
+<!--    <form id="loginForm" method="post">-->
+<!--      <label>Email or Phone Number</label>-->
+<!--      <input type="text" id="email" placeholder="you@example.com or +880..." required />-->
+
+<!--      <label>Password</label>-->
+<!--      <input type="password" id="password" placeholder="••••••••" required />-->
+
+<!--      <button type="submit">Log In</button>-->
+<!--    </form>-->
+<!--    <div id="message"></div>-->
+
+<!--    <div class="signup-link">-->
+<!--      Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a>-->
+<!--    </div>-->
+<!--  </section>-->
+
+<!--   <footer>-->
+<!--    <p>Contact: teamreflex@cropmate.com | Phone: +880 18444858504</p>-->
+
+<!--    <div class="social-icons">-->
+<!--      <a href="#"><i class="fab fa-facebook-square"></i></a>-->
+<!--      <a href="#"><i class="fab fa-instagram-square"></i></a>-->
+<!--      <a href="#"><i class="fab fa-twitter-square"></i></a>-->
+<!--    </div>-->
+
+<!--    <div class="review">-->
+<!--      <p>Leave a review:</p>-->
+<!--      <form id="login-form" method="POST" action="{{ url_for('login') }}">-->
+<!--  <label>Email:-->
+<!--    <input type="email" id="email" name="email" required>-->
+<!--  </label><br>-->
+<!--  <label>Password:-->
+<!--    <input type="password" id="password" name="password" required>-->
+<!--  </label><br>-->
+<!--  <button type="submit">Log In</button>-->
+<!--</form>-->
+<!--      <div id="message">-->
+<!--      {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--        {% for category, message in messages %}-->
+<!--          <p class="{{ category }}">{{ message }}</p>-->
+<!--        {% endfor %}-->
+<!--      {% endwith %}-->
+<!--    </div>-->
+
+
+
+<!--    </div>-->
+
+<!--    <div class="copyright">-->
+<!--      &copy; 2025 CropMate. All rights reserved.-->
+<!--    </div>-->
+<!--  </footer>-->
+
+
+<!--  <script>-->
+<!--  const form = document.getElementById('login-form');-->
+<!--  const msg  = document.getElementById('message');-->
+
+<!--  form.addEventListener('submit', async e => {-->
+<!--    e.preventDefault();-->
+<!--    const email    = form.email.value;-->
+<!--    const password = form.password.value;-->
+
+<!--    const resp = await fetch('{{ url_for("login") }}', {-->
+<!--      method: 'POST',-->
+<!--      headers: { 'Content-Type': 'application/json' },-->
+<!--      credentials: 'same-origin',       // ← important!-->
+<!--      body: JSON.stringify({ email, password })-->
+<!--    });-->
+<!--    const j = await resp.json();-->
+
+<!--    if (j.success) {-->
+<!--      msg.textContent = 'Login Successful ✅';-->
+<!--      msg.style.color = 'green';-->
+<!--      // now actually go to /service-->
+<!--      setTimeout(() => window.location.href = '/service', 800);-->
+<!--    } else {-->
+<!--      msg.textContent = j.message;-->
+<!--      msg.style.color = 'red';-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta charset="UTF-8"/>&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>&ndash;&gt;-->
+<!--&lt;!&ndash;  <title>CropMate – Log In</title>&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet"&ndash;&gt;-->
+<!--&lt;!&ndash;        href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"/>&ndash;&gt;-->
+<!--&lt;!&ndash;  &lt;!&ndash; your other CSS links… &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;  <header>&ndash;&gt;-->
+<!--&lt;!&ndash;    <nav>&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1>Crop<span>Mate</span></h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a href="{{ url_for('index') }}">Home</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a href="{{ url_for('about') }}">About</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a href="{{ url_for('service') }}">Service</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a href="{{ url_for('contact') }}">Contact</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% if session.email %}&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="{{ url_for('logout') }}">Logout</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="{{ url_for('login') }}">Login</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </nav>&ndash;&gt;-->
+<!--&lt;!&ndash;  </header>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <section class="login-card">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h2>Log In to Your Account</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash; Plain form, no JS &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <form method="POST" action="{{ url_for('login') }}">&ndash;&gt;-->
+<!--&lt;!&ndash;      <label>Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="email" name="email" placeholder="you@example.com" required/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      <label>Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="password" name="password" placeholder="••••••••" required/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      <button type="submit">Log In</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div id="message">&ndash;&gt;-->
+<!--&lt;!&ndash;      {% with messages = get_flashed_messages(with_categories=true) %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for category, message in messages %}&ndash;&gt;-->
+<!--&lt;!&ndash;          <p class="{{ category }}">{{ message }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;      {% endwith %}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <p>Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>&ndash;&gt;-->
+<!--&lt;!&ndash;  </section>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AGROPRO Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <style>
+    <style>
+    /* YOUR ORIGINAL CSS IS FULLY RESTORED HERE */
     * {
       box-sizing: border-box;
       font-family: 'Open Sans', sans-serif;
@@ -150,7 +513,7 @@
     .review p {
       margin-bottom: 6px;
     }
-   
+
     .review input[type="email"] {
       padding: 10px;
       width: 70%;
@@ -168,7 +531,6 @@
       cursor: pointer;
       margin-left: 10px;
       transition: 0.3s;
-      /* width: 5%; */
       max-width: 100px;
     }
 
@@ -204,7 +566,7 @@
       }
     }
   </style>
-</head>
+    </head>
 <body>
   <header>
     <nav>
@@ -221,12 +583,12 @@
 
   <section class="login-card">
     <h2>Log In to Your Account</h2>
-    <form id="loginForm">
-      <label>Email or Phone Number</label>
-      <input type="text" id="email" placeholder="you@example.com or +880..." required />
+    <form id="login-form" method="post">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-      <label>Password</label>
-      <input type="password" id="password" placeholder="••••••••" required />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="••••••••" required />
 
       <button type="submit">Log In</button>
     </form>
@@ -236,45 +598,45 @@
       Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a>
     </div>
   </section>
-
-   <footer>
+  <footer>
     <p>Contact: teamreflex@cropmate.com | Phone: +880 18444858504</p>
-
     <div class="social-icons">
       <a href="#"><i class="fab fa-facebook-square"></i></a>
       <a href="#"><i class="fab fa-instagram-square"></i></a>
       <a href="#"><i class="fab fa-twitter-square"></i></a>
     </div>
-
-    <div class="review">
-      <p>Leave a review:</p>
-      <form>
-        <input type="email" placeholder="Your email" required />
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
-
     <div class="copyright">
       &copy; 2025 CropMate. All rights reserved.
     </div>
   </footer>
 
-
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const message = document.getElementById('message');
+    const form = document.getElementById('login-form');
+    const msg  = document.getElementById('message');
 
-      if (email && password) {
-        message.textContent = 'Login Successful ✅';
-        message.style.color = 'green';
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email    = form.email.value;
+      const password = form.password.value;
+
+      const resp = await fetch('{{ url_for("login") }}', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const j = await resp.json();
+
+      if (j.success) {
+        msg.textContent = 'Login Successful ✅';
+        msg.style.color = 'green';
+        // Redirect to the service page after a successful login
+        setTimeout(() => window.location.href = '{{ url_for("service") }}', 800);
       } else {
-        message.textContent = 'Please fill in both fields.';
-        message.style.color = 'red';
+        msg.textContent = j.message;
+        msg.style.color = 'red';
       }
     });
   </script>
+
 </body>
 </html>
