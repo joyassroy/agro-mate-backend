@@ -292,7 +292,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crop Recommendation System</title>
+  <title>CropMate - Service</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
@@ -484,6 +484,22 @@
       border-top: 1px solid #444;
       margin-top: 2rem;
     }
+    /* Add this inside the <style> tag in service.html */
+.details-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 25px;
+  background-color: #28a745; /* Green color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.details-button:hover {
+  background-color: #218838; /* Darker green */
+}
 
     /* --- STYLES ADDED FOR FLASH MESSAGES --- */
     .flashes { list-style-type: none; margin: 20px auto; padding: 0; width: 80%; max-width: 600px; }
@@ -531,34 +547,38 @@
     <h2>Enter Soil & Environmental Data</h2>
     <form id="crop-form" method="post">
       <label for="nitrogen">Nitrogen (N):</label>
-      <input type="number" id="nitrogen" name="nitrogen" min="1" max="10000" required>
+<input type="text" id="nitrogen" name="nitrogen" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
-      <label for="phosphorus">Phosphorus (P):</label>
-      <input type="number" id="phosphorus" name="phosphorus" min="1" max="10000" required>
+<label for="phosphorus">Phosphorus (P):</label>
+<input type="text" id="phosphorus" name="phosphorus" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
-      <label for="potassium">Potassium (K):</label>
-      <input type="number" id="potassium" name="potassium" min="1" max="10000" required>
+<label for="potassium">Potassium (K):</label>
+<input type="text" id="potassium" name="potassium" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
-      <label for="temperature">Temperature (°C):</label>
-      <input type="number" id="temperature" name="temperature" min="1" max="10000" required>
+<label for="temperature">Temperature (°C):</label>
+<input type="text" id="temperature" name="temperature" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
-      <label for="humidity">Humidity (%):</label>
-      <input type="number" id="humidity" name="humidity" min="1" max="10000" required>
+<label for="humidity">Humidity (%):</label>
+<input type="text" id="humidity" name="humidity" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
-      <label for="ph">pH level:</label>
-      <input type="number" id="ph" name="ph" min="1" max="10000" required>
+<label for="ph">pH level:</label>
+<input type="text" id="ph" name="ph" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
-      <label for="rainfall">Rainfall (mm):</label>
-      <input type="number" id="rainfall" name="rainfall" min="1" max="10000" required>
+<label for="rainfall">Rainfall (mm):</label>
+<input type="text" id="rainfall" name="rainfall" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" required>
 
       <button type="submit">Recommend Crop</button>
     </form>
 
     <div class="result" id="result">
-        {% if result %}
-    <h2>Recommended Crop: {{ result }}</h2>
-  {% endif %}
-    </div>
+    {% if result %}
+      <h2>Recommended Crop: {{ result|title }}</h2>
+
+      <a href="{{ url_for('output', crop_name=result) }}" target="_blank" class="details-button">
+          View Growing Guide
+      </a>
+    {% endif %}
+</div>
   </div>
 
    <footer>
