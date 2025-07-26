@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crop Recommendation Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * { box-sizing: border-box; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }
+    body {
+      background: url('{{ url_for('static', filename='images/rrr.avif') }}') no-repeat  center fixed;
+      background-size: cover;
+      color: #333;
+    }
+     header {
+      background-color: #000;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      color: #28a745;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    nav span {
+      color: rgb(238, 178, 104);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #28a745;
+    }
+    nav a {
+      margin: 0 15px; color: white; text-decoration: none; font-weight: bold; position: relative;
+    }
+    
+    .form-card {
+      max-width: 520px; margin: 60px auto; background: rgba(255,255,255,0.95);
+      padding: 35px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    h2 { text-align: center; margin-bottom: 25px; color: #228B22; }
+    label { display: block; margin: 12px 0 6px; font-weight: bold; }
+    input, select {
+      width: 100%; padding: 10px; border: 1px solid #aaa; border-radius: 6px; transition: border-color 0.3s ease;
+    }
+    input:focus, select:focus { border-color: #228B22; outline: none; }
+    select[multiple] { height: 100px; }
+    button {
+      margin-top: 25px; padding: 14px; background-color: #228B22; color: white; border: none;
+      border-radius: 6px; font-size: 16px; cursor: pointer; width: 100%;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover { background-color: #1c6e1c; transform: scale(1.02); }
+    .login-link { margin-top: 20px; text-align: center; font-size: 15px; }
+    .login-link a { color: #228B22; text-decoration: none; font-weight: bold; }
+    .login-link a:hover { text-decoration: underline; }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    .social-icons {
+      margin: 1rem 0;
+    }
+
+    .social-icons a {
+      margin: 0 8px;
+      color: #28a745;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: rgb(238, 178, 104);
+    }
+
+    .review p {
+      margin-bottom: 6px;
+    }
+
+    .review input[type="email"] {
+      padding: 10px;
+      width: 70%;
+      max-width: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .review input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #28a745;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: 0.3s;
+      max-width: 100px;
+    }
+
+    .review input[type="submit"]:hover {
+      background-color: #218838;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 1px solid #444;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      header, .form-card { padding: 20px; }
+      header nav { display: none; }
+      .form-card { margin: 20px; }
+    }
+    .success-message {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #DFF5DF;
+      color: #228B22;
+      font-weight: bold;
+      border-radius: 8px;
+      animation: fadeIn 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Crop<span>Mate</span></h1>
+      <div>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('service') }}">Service</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="form-card">
+    <h2>Sign Up for Crop Recommendations</h2>
+    <form id="signupForm">
+      <label>Full Name</label>
+      <input type="text" placeholder="Your Name" required />
+      
+      <label>Email Address</label>
+      <input type="email" placeholder="you@example.com" required />
+      
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+8801XXXXXXXXX" pattern="[+]{1}[0-9]{11,14}" required />
+      
+      <label>Password</label>
+      <input type="password" required />
+      
+      <label>Confirm Password</label>
+      <input type="password" required />
+      
+      <label>Location</label>
+      <input type="text" placeholder="e.g., Dhaka, Bangladesh" required />
+      
+      <label>Crops of Interest</label>
+      <select multiple>
+        <option>Rice</option>
+        <option>Papaya</option>
+        <option>Maize</option>
+        <option>Apple</option>
+        <option>Mango</option>
+        <option>Banana</option>
+        <option>Orange</option>
+        <option>Jute</option>
+      </select>
+      
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="success-message" id="successMessage">
+      Sign Up Successful!
+    </div>
+    <div class="login-link">
+      Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+    </div>
+  </section>
+
+   <footer>
+    <p>Contact: teamreflex@cropmate.com | Phone: +880 18444858504</p>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-square"></i></a>
+      <a href="#"><i class="fab fa-instagram-square"></i></a>
+      <a href="#"><i class="fab fa-twitter-square"></i></a>
+    </div>
+
+    <div class="review">
+      <p>Leave a review:</p>
+      <form>
+        <input type="email" placeholder="Your email" required />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 CropMate. All rights reserved.
+    </div>
+  </footer>
+
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('successMessage').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

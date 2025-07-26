@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crop Recommendation System</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("{{ url_for('static', filename='images/rr.jpg') }}") no-repeat center  fixed;
+      background-size: cover;
+      color: #1e1e1e;
+    }
+
+     header {
+      background-color: #000;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      color: #28a745;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    nav span {
+      color: rgb(238, 178, 104);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #28a745;
+    }
+
+
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .container h2 {
+      color: #164A24;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #164A24;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input:focus {
+      border-color: #164A24;
+      outline: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #164A24;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #102f17;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #DFF5DF;
+      border-radius: 5px;
+      color: #164A24;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    .social-icons {
+      margin: 1rem 0;
+    }
+
+    .social-icons a {
+      margin: 0 8px;
+      color: #28a745;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: rgb(238, 178, 104);
+    }
+
+    .review p {
+      margin-bottom: 6px;
+    }
+
+    .review input[type="email"] {
+      padding: 10px;
+      width: 70%;
+      max-width: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .review input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #28a745;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: 0.3s;
+      max-width: 100px;
+    }
+
+    .review input[type="submit"]:hover {
+      background-color: #218838;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 1px solid #444;
+      margin-top: 2rem;
+    }
+
+  </style>
+</head>
+<body>
+
+ <header>
+    <nav>
+      <h1>Crop<span>Mate</span></h1>
+      <div>
+       <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('service') }}">Service</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Crop Recommendation System</h1>
+  </section>
+
+  <div class="container">
+    <h2>Enter Soil & Environmental Data</h2>
+    <form id="crop-form" method="post">
+      <label for="nitrogen">Nitrogen (N):</label>
+      <input type="number" id="nitrogen" name="nitrogen" min="1" max="10000" required>
+
+      <label for="phosphorus">Phosphorus (P):</label>
+      <input type="number" id="phosphorus" name="phosphorus" min="1" max="10000" required>
+
+      <label for="potassium">Potassium (K):</label>
+      <input type="number" id="potassium" name="potassium" min="1" max="10000" required>
+
+      <label for="temperature">Temperature (°C):</label>
+      <input type="number" id="temperature" name="temperature" min="1" max="10000" required>
+
+      <label for="humidity">Humidity (%):</label>
+      <input type="number" id="humidity" name="humidity" min="1" max="10000" required>
+
+      <label for="ph">pH level:</label>
+      <input type="number" id="ph" name="ph" min="1" max="10000" required>
+
+      <label for="rainfall">Rainfall (mm):</label>
+      <input type="number" id="rainfall" name="rainfall" min="1" max="10000" required>
+
+      <button type="submit">Recommend Crop</button>
+    </form>
+
+    <div class="result" id="result">
+        {% if result %}
+    <h2>Recommended Crop: {{ result }}</h2>
+  {% endif %}
+    </div>
+  </div>
+
+   <footer>
+    <p>Contact: teamreflex@cropmate.com | Phone: +880 18444858504</p>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-square"></i></a>
+      <a href="#"><i class="fab fa-instagram-square"></i></a>
+      <a href="#"><i class="fab fa-twitter-square"></i></a>
+    </div>
+
+    <div class="review">
+      <p>Leave a review:</p>
+      <form>
+        <input type="email" placeholder="Your email" required />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 CropMate. All rights reserved.
+    </div>
+  </footer>
+
+
+
+</body>
+</html>
